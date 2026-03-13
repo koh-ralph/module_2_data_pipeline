@@ -1,0 +1,21 @@
+fixed:
+  account: abc123
+  authenticator: externalbrowser
+  database: analytics
+  role: transformer
+  type: snowflake
+  warehouse: transforming
+prompts:
+  target:
+    type: string
+    hint: your desired target name
+  user:
+    type: string
+    hint: yourname@jaffleshop.com
+  schema:
+    type: string
+    hint: usually dbt_<yourname>
+  threads:
+    hint: "your favorite number, 1-10"
+    type: int
+    default: 8
