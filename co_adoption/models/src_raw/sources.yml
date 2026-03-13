@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: raw
+    database: bigquery-public-data
+    tables:
+      - name: ai_company_adoption
+        description: "Raw ingest from CSV"
