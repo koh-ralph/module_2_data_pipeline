@@ -1,0 +1,16 @@
+# BigQuery and Cloud connectivity
+google-cloud-bigquery
+pandas-gbq
+google-auth
+
+# Data Processing
+pandas
+numpy
+
+# Visualization for EDA
+matplotlib
+seaborn
+plotly
+
+# Jupyter environment
+ipykernel
