@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_ai_adoption
+    description: "Cleaned AI survey data from CSV seed"
+    columns:
+      - name: response_id
+        description: "Unique identifier for each survey response"
+        tests:
+          - unique
+          - not_null
+      - name: company_id
+        tests:
+          - not_null
+
+  - name: fact_ai_survey
+    description: "Central fact table for AI Adoption metrics"
+    columns:
+      - name: total_ai_budget_millions
+        description: "Derived: Annual revenue multiplied by AI budget percentage"

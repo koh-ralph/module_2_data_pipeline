@@ -32,5 +32,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   co_adoption:
     # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    staging:
+      +materialized: view  # Staging is usually views for efficiency
+    marts:
+      +materialized: table # Dims and Facts should be tables in BigQuery
+seeds:
+  co_adoption:
+    +column_types:
+      response_id: int64
