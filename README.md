@@ -367,26 +367,3 @@ ORDER BY c.industry, d.survey_year, a.stage_order;
 | Survey data is self-reported | Companies may over-report positive outcomes | `DimSurveySource` allows filtering to more reliable sources |
 
 ---
-
-## 10. Handoff Checklist
-
-### For ELT Engineer (Phase 3 — dbt)
-
-- [ ] Confirm read access to `ntu-big-data.AI_Company_Adoption.AI_company_adoption_dataset`
-- [ ] Confirm write access to `ntu-data-science-488111.dw`
-- [ ] Run verification query in `create_tables.sql` — confirm 5 seeded tables have rows
-- [ ] Set up dbt project with BigQuery adapter (`dbt init`, location = US)
-- [ ] Create `sources.yml` pointing to `ntu-big-data.AI_Company_Adoption.AI_company_adoption_dataset`
-- [ ] Build staging model first: `stg_ai_company_adoption.sql`
-- [ ] Build dimension models (no dependencies between them): `dim_company`, `dim_date`, `dim_ai_tool`, `dim_ai_usecase`, `dim_ai_adoption_stage`, `dim_survey_source`
-- [ ] Build fact model last (depends on all dims): `fact_ai_survey.sql`
-- [ ] Run `dbt test` — all tests must pass before proceeding to Phase 4
-- [ ] Run verification query again — `DimCompany` and `FactAISurvey` should now have rows
-- [ ] Share `dbt docs generate` lineage graph with team
-
-### For Data Analyst (Phase 5 — Python / BI)
-
-- [ ] Connect to `ntu-data-science-488111.dw` via SQLAlchemy or BigQuery Python client
-- [ ] Use sample queries in Section 7 above as starting points
-- [ ] All 3 business questions can be answered with `FactAISurvey` + the relevant dimension JOINs
-- [ ] Derived columns (`net_jobs_change`, `ai_roi_index`, `productivity_efficiency_score`) are pre-computed — use them directly
